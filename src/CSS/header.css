@@ -1,6 +1,10 @@
 .test{
     background: #24343f;
 }
+.test2{
+    background: #24343f;
+}
+
 .main-header-container{
     display: flex;
     flex-direction: column;
