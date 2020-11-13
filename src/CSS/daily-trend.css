@@ -1,0 +1,70 @@
+.daily-trend-container{
+    position: relative;
+}
+.daily-trend-container .icon-container{
+    border-radius: 50%;
+    border: 1px solid rgba(151,151,151,.22);
+    padding: 4px;
+    margin-left: 5px;
+    background: var(--background-default-components);
+    /* height: 28px;
+    width: 28px; */
+}
+.daily-trend-container .icon-container svg{
+    height: 18px;
+    width: 28px;
+
+}
+
+
+.daily-trend-Line-Chart-container{
+background: var(--background-default-components);
+border-radius: 15px;
+position: absolute;
+width: 65vw;
+height: 55vh;
+
+top: 50px;
+left:10px;
+z-index:1;
+
+}
+.container .daily-trend-chart{
+    width: 400px;
+    height: 300px;
+}
+@media(min-width:800px){
+
+    .container .daily-trend-chart{
+        width: 450px;
+        height: 250px;
+    }
+
+}
+
+
+@media(min-width:1000px){
+ 
+    .daily-trend-Line-Chart-container{
+        width: 45vw;
+        height: 45vh;
+        
+    }
+    .container .daily-trend-chart{
+        width: 600px;
+        height: 250px;
+    }
+}
+@media(min-width:1335px){
+
+    .daily-trend-Line-Chart-container{
+        width: 25vw;
+        height: 35vh;
+        
+    }
+    .container .daily-trend-chart{
+        width: 700px;
+        height: 200px;
+    }
+
+}

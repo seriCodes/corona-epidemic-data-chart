@@ -1,0 +1,12 @@
+.stats-bottom-element-container{
+display: flex;
+justify-content: flex-start;
+}
+
+
+.stats-bottom-element-container .col{
+    margin: 0px 7px;
+}
+.stats-bottom-element-container .amount{
+    font-weight: 700;
+}
