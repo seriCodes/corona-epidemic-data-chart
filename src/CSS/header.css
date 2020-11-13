@@ -1,14 +1,14 @@
-
+.test{
+    background: #24343f;
+}
 .main-header-container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
  height:calc( var(--header-heighet)+var(--header-heighet-small-screen-extra));   
 
- /* auto;    */
- background:white;
- /*  ; */
- position: fixed;
+  background:white;
+  position: fixed;
  top: 0px;
  left: 0px;
 width: 100%;
