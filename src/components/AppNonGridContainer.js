@@ -31,7 +31,7 @@ import  '../CSS/sixt-line.css'
 import  '../CSS/epidemic-chart.css'
 import  '../CSS/severe-chart.css'
 import  '../CSS/staff-status.css'
-import  '../CSS/header.css'
+// import  '../CSS/header.css'
 
 // <GraphsCheck></GraphsCheck>   
 // <GraphsCheckBars></GraphsCheckBars>
