@@ -9,8 +9,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-height:calc(var(--header-heighet)+var(--header-heighet-small-screen-extra));
-
+/* height:calc(var(--header-heighet)+var(--header-heighet-small-screen-extra)); */
+/* unfortunately inner css func's prevents heroku deployment */
+height:80px;
+/*  */
 
   background:white;
   position: fixed;
