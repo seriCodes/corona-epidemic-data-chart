@@ -7,8 +7,9 @@ import {SideBar} from './SideBar';
 import {Header} from './Header'
 import {EchartExpB} from './playground/GraphsCheckB'; 
 import {SideBarsChart} from './playground/SideBarsChart'; 
+import {ReactTablePlay} from './playground/ReactTablePlay'; 
 
-// import 'chartjs-top-round-bar';  
+// import 'chartjs-top-round-bar';   
 // import {ModalCenter} from './ModalCenter';  
 import    '../CSS/hamburger-button.css';  
 import    '../CSS/accessible-view.css';  
@@ -52,7 +53,7 @@ export const AppNonGridContainer = () => {
         <AppContainer></AppContainer>
         <SideBar></SideBar>
 
-        <DropTether></DropTether>
+        <ReactTablePlay></ReactTablePlay>
 
                
           </div>
