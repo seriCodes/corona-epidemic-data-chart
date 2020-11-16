@@ -1,7 +1,8 @@
 import React from 'react'
 import AppContainer from './AppContainer';  
 import {SideBar} from './SideBar';  
- import {EchartExp,GraphsCheck,GraphsCheckBars} from './playground/GraphsCheck'; 
+ import {EchartExp,GraphsCheck,GraphsCheckBars,} from './playground/GraphsCheck'; 
+ import {DropTether} from './playground/DropTether'; 
  import {SicksDistributionCopy,YValuesExample,EchartWork} from './playground/SicksDistributionCopy'; 
 import {Header} from './Header'
 import {EchartExpB} from './playground/GraphsCheckB'; 
@@ -35,11 +36,14 @@ import  '../CSS/header.css'
 
 // <GraphsCheck></GraphsCheck>   
 // <GraphsCheckBars></GraphsCheckBars>
-
+// <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 export const AppNonGridContainer = () => {
     return (
         <div class ="app-NonGrid-container">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <link rel="stylesheet" href="drop-theme-arrows.css" />
+        <script src="tether.min.js"></script>
+        <script src="drop.min.js"></script>
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
          <script type="text/javascript" charset="utf-8" src="js/Chart.min.js"></script>
  
@@ -47,6 +51,10 @@ export const AppNonGridContainer = () => {
 
         <AppContainer></AppContainer>
         <SideBar></SideBar>
+
+        <DropTether></DropTether>
+
+               
           </div>
     )
 }
@@ -55,7 +63,7 @@ export const AppNonGridContainer = () => {
 // <EchartWork></EchartWork>
 // <EchartExp></EchartExp>
 // <EchartExpB></EchartExpB>
-               
+//    
 
 
 

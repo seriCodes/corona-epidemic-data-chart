@@ -3,7 +3,7 @@ import {Button} from './common/Button'
 import {toggleDisplayNone,addDisplayNoneToClassElements } from '../functions/reveal-elemnts';
 import {v1 as uuidv1} from "uuid";
 
-var Chart = require('chart.js');
+// var Chart = require('chart.js');
 
 var echarts = require('echarts')
 

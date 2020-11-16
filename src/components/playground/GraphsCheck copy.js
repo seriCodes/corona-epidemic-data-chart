@@ -1,6 +1,6 @@
 import React from 'react'
 import {v1 as uuidv1} from "uuid";
-var Chart = require('chart.js');
+// var Chart = require('chart.js');
 
 var echarts = require('echarts')
 

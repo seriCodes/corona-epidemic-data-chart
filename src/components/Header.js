@@ -1,8 +1,8 @@
 import React from 'react';
-import {HamburgerButton} from './HamburgerButton'
-import {Logo} from './Logo'
+import {HamburgerButton} from './HamburgerButton';
+import {Logo} from './Logo';
 import {AccessibleView } from './AccessibleView';
-import {Button} from './common/Button'
+import {Button} from './common/Button';
 
 import {toggleEndClass, toggleAppContainerWidth } from '../functions/reveal-elemnts';
 

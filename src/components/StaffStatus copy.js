@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-var Chart = require('chart.js');
+// var Chart = require('chart.js');
 
 export const StaffStatus = () => {
     React.useEffect(()=>{
