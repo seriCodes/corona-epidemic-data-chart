@@ -23,12 +23,32 @@ border-radius: 15px;
 position: absolute;
 width: 65vw;
 height: 55vh;
-
-top: 50px;
-left:10px;
 z-index:1;
+background: lawngreen;
 
 }
+
+.display-popup-top{
+    top: 40px;
+     background: red;
+
+}
+.display-popup-down{
+    bottom:  50px;
+     background: blue;
+}
+.display-popup-right{
+     left:10px;
+    /* background: blue; */
+
+}
+.display-popup-left{
+     left:10px;
+    /* background: blue; */
+
+}
+
+
 .container .daily-trend-chart{
     width: 400px;
     height: 300px;

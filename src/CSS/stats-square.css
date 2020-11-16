@@ -22,12 +22,18 @@ flex-direction: column;
 font-size: .8em;
     }
 .stats-square-container .difference .amount{
-   
     font-weight: 700 ;
 
 }
 
+.stats-square-container .amount-period{
+    font-weight: initial ;
 
+}
 .stats-square-container .bottom-element {
     margin-top:80px ;
+    margin-top: auto;
 }
+
+
+

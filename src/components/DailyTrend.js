@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react'
 import {Button} from './common/Button'
-import {toggleDisplayNone,addDisplayNoneToClassElements } from '../functions/reveal-elemnts';
+import {postitionPopUpInsideviewport,addDisplayNoneToClassElements } from '../functions/reveal-elemnts';
 import {v1 as uuidv1} from "uuid";
- 
+var withinviewport = require('withinviewport');
+
+
 let fontFamily= "Open Sans Hebrew";
  
 export const DailyTrend = (props) => {
@@ -21,7 +23,8 @@ export const DailyTrend = (props) => {
             <Button callBack={(e)=>{
               
                 let elem= document.getElementById(trendLineChart)
-                console.log(elem.classList.contains(`display-none`))
+                // console.log(elem.classList.contains(`display-none`))
+
                 if(!elem.classList.contains(`display-none`)){
                  elem.classList.add(`display-none`)
                  return
@@ -30,6 +33,35 @@ export const DailyTrend = (props) => {
 
              
                 elem.classList.remove(`display-none`)
+                /////positikon in window
+// let style=elem.style;
+                // postitionPopUpInsideviewport(elem)
+              console.log(withinviewport(elem))  
+                // elem.classList.remove("display-popup-top", "display-popup-down", "display-popup-right", 'display-popup-left');
+
+                // let elemPositionRect = elem.getBoundingClientRect();
+                // console.log('elemPositionRect')
+                // console.log(elemPositionRect)
+                // console.log(window.innerHeight)
+                
+
+                // if(elemPositionRect.top<0){
+                    
+                //     elem.classList.add('display-popup-top')
+                //     // elemPositionRect.
+                // }
+                // if(elemPositionRect.bottom>window.innerHeight){
+                //     elem.classList.add('display-popup-down')
+
+                // }
+                // if(elemPositionRect.left<0){
+                //     elem.classList.add('display-popup-right')
+
+                // }
+                // if(elemPositionRect.right>window.innerWidth){
+                //     elem.classList.add('display-popup-left')
+
+                // }
 
                
  }}>
@@ -54,8 +86,7 @@ let seriesName, minInterval, xAxisData,title,yAxisTitle,seriesData
 ({minInterval,xAxisData,title,yAxisTitle,seriesData,seriesName,}=props.data
 );
 let chartId= uuidv1();
- let chartId2= uuidv1();
-
+ 
     React.useEffect(()=>{
 
      var myChart= echarts.init(document.getElementById(chartId));
@@ -259,19 +290,14 @@ let chartId= uuidv1();
      }
          
 
- );  
- 
-
-
- 
-
+ );   
 })
 
     return (
         <div onClick={(e)=>{e.stopPropagation()}} class="container daily-trend-Line-Chart-container display-none" id={props.id}>
   
         <div class="upper-container">
-        <span class="chart-title sub-title">מגמת שינו יומית - {title}
+        <span class="chart-title sub-title">מגמת שינוי יומית - {title}
         </span>
                 </div>
         <div class="container">

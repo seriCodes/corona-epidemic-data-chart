@@ -1,18 +1,12 @@
-.test{
-    background: #24343f;
-}
-.test2{
-    background: #24343f;
-}
-
-.main-header-container{
+ .main-header-container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 /* height:calc(var(--header-heighet)+var(--header-heighet-small-screen-extra)); */
+/* development version- fine in small screens  */
 /* unfortunately inner css func's prevents heroku deployment */
-height:80px;
-/*  */
+/* height:80px;  production  version- problem in small screen */
+
 
   background:white;
   position: fixed;
@@ -65,10 +59,14 @@ height: var(--header-heighet-small-screen-extra);
 .main-header-container .sub-title{
     font-weight: initial;
 }
-/*  */
+.header-ending .button-default-view {
+margin-left: 17px;
+}
+
 @media(min-width:1000px){
     .main-header-container{
-        height: var(--header-heighet);   
+        /* height: var(--header-heighet); see above comment about  --header-heighet*/
+        height: 75px;
 
         flex-direction: row;
         /* justify-content: flex-start; */
@@ -99,6 +97,4 @@ height: var(--header-heighet-small-screen-extra);
         font-size: .9rem;
     }
  
-}
-
-/*     */
+} 

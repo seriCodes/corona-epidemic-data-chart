@@ -60,3 +60,50 @@ export function toggleAnimateArrowClass(id){
 
 }
 
+export function postitionPopUpInsideviewport(elem){
+    elem.removeAttribute("style")
+
+    let elemPositionRect = elem.getBoundingClientRect();
+    console.log('elemPositionRect')
+
+    console.log(elemPositionRect.bottom)
+    console.log(window.innerHeight)
+
+let bottomDifference= elemPositionRect.bottom-window.innerHeight;
+// let topDifference= elemPositionRect.bottom-window.innerHeight;
+let rightDifference= elemPositionRect.right-window.innerWidth;
+// let bottomDifference= elemPositionRect.bottom-window.innerHeight;
+
+        // changeElemPositioning(elem,'bottom', bottomDifference)
+
+    if(bottomDifference>0){
+        elem.style.bottom=bottomDifference+'px'
+    }
+    if(rightDifference>0){
+        // elem.style.right=rightDifference+'px'
+    }
+    function changeElemPositioning(elem,position) {
+        console.log('position')
+
+        console.log(position)
+        var id =  setInterval(()=>{
+            console.log(elem.style[position])
+
+            elem.style[position]=elem.style[position]+1+'px'
+        },1000,);
+
+
+    
+    }
+    // var id =  setInterval(alertFunc,1000,);
+
+    // function alertFunc() {
+    //     alert("Hello!");
+
+    //   }
+      
+    // let arrowContainer=document.getElementById(id)
+    // arrowContainer.classList.toggle('arrow-animation')
+
+}
+
