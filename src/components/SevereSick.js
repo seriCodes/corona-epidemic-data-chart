@@ -147,8 +147,9 @@ export const SevereSick = () => {
                   },
 
                   color: severeColor,//a default color for legend icon
-
+ 
                   itemStyle:{
+
                     color: (param) => {//a must for seperating symbol and legend color
                         // console.log('itemStyle param')
                         //  console.log(param)
@@ -164,6 +165,7 @@ export const SevereSick = () => {
                       color:'black',
                       position:'inside'
                       ,
+
                   },
       
             },
@@ -429,6 +431,7 @@ let optionsContainerId=uuidv1()
         
 // 
         }} class1='selector-button-container prevent-propagation'>
+        <div class="selector-button-container-items">
 
         <span class='selector-button-text'>
         {
@@ -438,7 +441,11 @@ data.timePeriod=='all-data'?"עד עכשיו":data.timePeriod=='last-week'?"שב
         </span> 
 
         <div id={arrowId} class=' selector-button-icon'>
-        &#8744;
+        <span class="arrow-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="100%" height="100%" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="chevron-down"><rect width="24" height="24" opacity="0"></rect><path d="M12 15.5a1 1 0 0 1-.71-.29l-4-4a1 1 0 1 1 1.42-1.42L12 13.1l3.3-3.18a1 1 0 1 1 1.38 1.44l-4 3.86a1 1 0 0 1-.68.28z"></path></g></g></svg>
+        
+        </span>
+        </div>
         </div>
 
         </Button>
@@ -479,7 +486,7 @@ data.timePeriod=='all-data'?"עד עכשיו":data.timePeriod=='last-week'?"שב
         </div>
 
 
-        <div id="severeChart" class="container severe-chart-container"> </div>
+        <div id="severeChart" class="container severe-chart-container chart-container"> </div>
         </div> 
     )
 }

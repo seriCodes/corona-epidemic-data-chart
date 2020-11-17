@@ -7,6 +7,16 @@
 
 
 }
+.table-container::-webkit-scrollbar {
+  width: 10px;
+  /* height: 10px; */
+}
+.table-container::-webkit-scrollbar-thumb {
+    background: gray; 
+    border-radius: 5px;
+  }
+  
+
 th {
     cursor: pointer;
       }
@@ -22,6 +32,18 @@ th {
 background: lawngreen;
 display: ;
 } */
+.crowded-percent{
+    background: lightblue;
+    display: inline-block; 
+    /*  */
+    height:10px;
+    border-radius: 10px 0px 0px 10px;
+    margin: 0px 5px;
+}
+.over-crowded{
+    background: darkslategrey;
+
+}
 @media(min-width:770px){
     .table-container{
         /* width:450px ; */

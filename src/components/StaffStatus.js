@@ -594,7 +594,7 @@ return -1*item
 
         </div>
 
-        <div id= 'other-staff-chart' class="container other-staff-chart-container " >
+        <div id= 'other-staff-chart' class="container other-staff-chart-container chart-container" >
         </div>
 
     </div>
@@ -602,7 +602,7 @@ return -1*item
 
       </div>
 
-        <div id= 'staff-chart' class="container staff-chart-container" >
+        <div id= 'staff-chart' class="container staff-chart-container chart-container" >
         
         </div>
 

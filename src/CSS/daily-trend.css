@@ -24,10 +24,26 @@ position: absolute;
 width: 65vw;
 height: 55vh;
 z-index:1;
-background: lawngreen;
-
+/* background: lawngreen; */
+box-shadow:0 0 20px 0 rgba(0,0,0,0.3607843137254902);
 }
 
+@media  (min-width: 300px) and  (max-width:519px) {
+    .daily-trend-Line-Chart-container{
+        position: fixed;
+        left: 30%;
+        top: 35%;
+        width: 90vw;
+
+        } 
+  }
+
+
+.display-center-viewport{
+    position: fixed;
+    left: 40%;
+    top: 35%;
+}
 .display-popup-top{
     top: 40px;
      background: red;

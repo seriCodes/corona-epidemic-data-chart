@@ -40,7 +40,13 @@ grid-template-areas:
 
 ;
 }
-
+@media  (min-width: 300px) and  (max-width:519px) {
+    .app-container{
+        grid-template-columns: 0 100% 0; 
+        /* background: brown; */
+    } 
+  }
+  
 .emptyHeaderHolder {
     grid-area:  emptyHeaderHolder  ;
     /* height:calc( var( --header-heighet)  +var(--header-heighet-small-screen-extra) ) ; */

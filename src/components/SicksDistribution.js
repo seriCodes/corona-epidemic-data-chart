@@ -465,6 +465,7 @@ const [data,setData]= React.useState(firstData)
         
 // 
         }} class1='selector-button-container prevent-propagation'>
+        <div class="selector-button-container-items">
 
         <span class='selector-button-text'>
         {
@@ -474,7 +475,10 @@ data.timePeriod=='verified'?"מאומתים":data.timePeriod=='dead'?"נפטרי
         </span> 
 
         <div id={arrowId} class=' selector-button-icon'>
-        &#8744;
+        <span class="arrow-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="100%" height="100%" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="chevron-down"><rect width="24" height="24" opacity="0"></rect><path d="M12 15.5a1 1 0 0 1-.71-.29l-4-4a1 1 0 1 1 1.42-1.42L12 13.1l3.3-3.18a1 1 0 1 1 1.38 1.44l-4 3.86a1 1 0 0 1-.68.28z"></path></g></g></svg>
+        
+        </span>        </div>
         </div>
 
         </Button>
@@ -512,16 +516,9 @@ data.timePeriod=='verified'?"מאומתים":data.timePeriod=='dead'?"נפטרי
         </div>
       
 
-
-        <select onChange={(e)=>changeDataPeriod(e)} class="data-period-selector">
-        <option value={"verified"}>מאומתים</option>
-        <option value={"dead"}>נפטרים</option>
-        <option value={"breath-aid"}>מונשמים</option>
-        <option value={"severe"}>מצב קשה</option>
-        </select>
-        
+ 
         </div>
-        <div id="sicksDistributionChart" class="container age-gender-chart-container">
+        <div id="sicksDistributionChart" class="container age-gender-chart-container chart-container">
            </div>
 
         </div>

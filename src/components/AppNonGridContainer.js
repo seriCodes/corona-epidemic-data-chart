@@ -53,13 +53,14 @@ export const AppNonGridContainer = () => {
         <AppContainer></AppContainer>
         <SideBar></SideBar>
 
-        <ReactTablePlay></ReactTablePlay>
 
                
           </div>
     )
 }
-// <SicksDistributionCopy></SicksDistributionCopy>
+//  <ReactTablePlay></ReactTablePlay>         <DropTether></DropTether>
+
+//  <SicksDistributionCopy></SicksDistributionCopy>
 // <YValuesExample></YValuesExample>
 // <EchartWork></EchartWork>
 // <EchartExp></EchartExp>

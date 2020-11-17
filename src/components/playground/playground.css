@@ -2,12 +2,16 @@
     background: red;
     margin: 10px 0px 85px 0px;
     /* margin: 15px 0px; */
- 
+    width: 300px;;
+    height: 300px;
+    z-index: 3;
 }
 .graphs-container, .sicks-distribution-container-play{
     position: absolute;
     top: 500px;
-    left: 400px;
+    /* left: 30px; */
+        left:400px;
+
     width: 500px;
     height: 200px;
     background: hotpink;
@@ -65,7 +69,10 @@
     width: 200px;
     height: 300px;
 }
+.drop-content{
+    border: blue solid 17px;
 
+}
 @media(min-width:700px){
     .echartExp{
         border: pink solid 17px;

@@ -311,7 +311,7 @@ export const SickDetectionsChecks = () => {
                     </div>
 
           
-                    <div class="container" id='sick-detection-chart'>
+                    <div class="container chart-container" id='sick-detection-chart'>
              </div>
                 
             </div>

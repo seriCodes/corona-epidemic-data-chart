@@ -16,6 +16,12 @@ width: 100%;
 padding-top:var(--header-padding-top);  
 z-index: 1; 
 }
+@media  (min-width: 300px) and  (max-width:519px) {
+    .main-header-container{
+        left: 52px;
+    } 
+  }
+  
 
 
 .main-header-container .header-start{

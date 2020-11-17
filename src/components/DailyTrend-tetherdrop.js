@@ -1,95 +1,61 @@
 import React, {useEffect} from 'react'
 import {Button} from './common/Button'
-import {postitionPopUpInsideviewport,addDisplayNoneToClassElements,deleteStyleAttributeFromClassElements } from '../functions/reveal-elemnts';
+import {postitionPopUpInsideviewport,addDisplayNoneToClassElements } from '../functions/reveal-elemnts';
 import {v1 as uuidv1} from "uuid";
+import * as Drop from 'tether-drop';
+
 var withinviewport = require('withinviewport');
 
 
 let fontFamily= "Open Sans Hebrew";
  
 export const DailyTrend = (props) => {
+    let trendLineTarget= uuidv1(); 
+
     let trendLineChart= uuidv1(); 
 
-    window.addEventListener('click',(e)=> {
-        addDisplayNoneToClassElements('daily-trend-Line-Chart-container')
-        deleteStyleAttributeFromClassElements('daily-trend-Line-Chart-container')
-})
+//     window.addEventListener('click',(e)=> {
+//         addDisplayNoneToClassElements('daily-trend-Line-Chart-container')
+// })
 // console.log('props.data11') 
 // console.log(props.data)
 
+window.addEventListener('DOMContentLoaded', (event) => { 
+try {
+//     console.log('object trendLineTarget trendLineTarget')
+
+// console.log("drop-target", document.querySelector(`.drop-target.${trendLineTarget}`))
+// console.log(document.querySelector(`.drop-content.${trendLineChart}`))
+/* drop content might apear unwillingly ithout explanation. eliminated it without explanation */
+let dropInstance
+ = new Drop({
+target: document.getElementById(trendLineTarget),
+content:document.getElementById(trendLineChart),
+
+// content:document.querySelector(`.drop-content#${trendLineChart}`),
+classes: 'drop-theme-arrows',
+// position:'top right',
+position:'top center',
+constrainToWindow:true,
+classes:"",
+openOn: 'click',
+remove:true,//essential to close the dropdown!!!
+})
+} catch (error) {
+console.log('error thrown in tether drop',error)
+}
+});
 
 
     return (
         <div class="daily-trend-container">
-            <Button callBack={(e)=>{
-              
-                let elem= document.getElementById(trendLineChart)
-                // console.log(elem.classList.contains(`display-none`))
-
-                if(!elem.classList.contains(`display-none`)){
-                 elem.classList.add(`display-none`)
-                 return
-                } 
-                addDisplayNoneToClassElements('daily-trend-Line-Chart-container')
-
-             
-                elem.classList.remove(`display-none`)
-                /////positikon in window
-// let style=elem.style;
-                // postitionPopUpInsideviewport(elem)
-              console.log(withinviewport(elem))
-              let insideViewportData={
-                  top:withinviewport(elem,{sides: 'top'}),
-                  bottom:withinviewport(elem,{sides: 'bottom'}),
-                  right:withinviewport(elem,{sides: 'right'}),
-                  left:withinviewport(elem,{sides: 'left'}),
-
-              }  
-              console.log(insideViewportData)
-              if(!insideViewportData.left){
-                  let outsideDistance=elem.getBoundingClientRect().left
-                  console.log('outsideDistance')
-                  console.log(outsideDistance)
-
-                elem.style.left=-1*outsideDistance +"px"
-               }
-            
-              //   if(!withinviewport(elem)){
-            //     elem.classList.add('display-center-viewport')
-            //   }
-                // elem.classList.remove("display-popup-top", "display-popup-down", "display-popup-right", 'display-popup-left');
-
-                // let elemPositionRect = elem.getBoundingClientRect();
-                // console.log('elemPositionRect')
-                // console.log(elemPositionRect)
-                // console.log(window.innerHeight)
-                
-
-                // if(elemPositionRect.top<0){
-                    
-                //     elem.classList.add('display-popup-top')
-                //     // elemPositionRect.
-                // }
-                // if(elemPositionRect.bottom>window.innerHeight){
-                //     elem.classList.add('display-popup-down')
-
-                // }
-                // if(elemPositionRect.left<0){
-                //     elem.classList.add('display-popup-right')
-
-                // }
-                // if(elemPositionRect.right>window.innerWidth){
-                //     elem.classList.add('display-popup-left')
-
-                // }
-
-               
- }}>
+    
+        <div class={`drop-target ${trendLineTarget}`} id={trendLineTarget}>
             <span class="icon-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" class="eva eva-bar-chart-2" fill="currentColor"><g data-name="Layer 2"><g data-name="bar-chart-2"><rect width="24" height="24" transform="rotate(90 12 12)" opacity="0"></rect><path d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"></path><path d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"></path><path d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"></path></g></g></svg> </span>
             <span>מגמת שינוי יומית</span>
 
-            </Button>
+            </div>
 
 
 <DailyTrendLineChart data={props.data} id={trendLineChart}></DailyTrendLineChart>
@@ -310,7 +276,7 @@ let chartId= uuidv1();
 })
 
     return (
-        <div onClick={(e)=>{e.stopPropagation()}} class="container daily-trend-Line-Chart-container display-none" id={props.id}>
+        <div onClick={(e)=>{e.stopPropagation()}} class={`container daily-trend-Line-Chart-container  ${props.id}`} id={props.id}>
   
         <div class="upper-container">
         <span class="chart-title sub-title">מגמת שינוי יומית - {title}

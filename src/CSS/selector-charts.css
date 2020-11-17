@@ -19,7 +19,7 @@ margin: 15px 0px;
     border-radius: 15px;
     font-weight: bolder;
     display: inline;
-    padding: 3px 6px;
+    padding: 3px 6px 3px 0px;
     /* margin-right: 13px; */
 }
 .options-button-container{
@@ -30,6 +30,10 @@ margin: 15px 0px;
  .prevent-propagation:hover{
     background:gray ;
 
+}
+.selector-button-container-items{
+    display: flex;
+    justify-content: space-between;
 }
 /* .prevent-propagation{
     background:red ;
@@ -44,6 +48,8 @@ margin: 15px 0px;
     border-width: 1px;
     border-radius: 10px;
     z-index: 1;
+    margin-top: 10px;
+    width: 128px;
 }
 .options-container div:hover{
     background: gray;
@@ -61,9 +67,26 @@ margin: 15px 0px;
     background:greenyellow ;
 
 } */
+.selector-button-container{
+    display: inline-block;
+    width:128px;
+    font-size: 0.7925rem;
+    /* background: cyan; */
+    /* position:relative; */
+}
 .selector-button-icon{
     margin: 0px 10px;
     display: inline-block;
+    /* position: absolute;
+    left: 111; */
+    /* font-size: 1.5rem; */
+ 
+}
+.arrow-icon{
+    display: inline-block;
+
+width: 15px;
+    height: 15px;
 }
 
 @media(min-width:1000px){

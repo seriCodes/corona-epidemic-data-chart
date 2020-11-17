@@ -53,7 +53,12 @@ for (const elem of elements) {
     elem.classList.add(`display-none`)
 }
 }
-
+export function deleteStyleAttributeFromClassElements(className){
+    let elements= document.getElementsByClassName(className)
+for (const elem of elements) {
+    elem.removeAttribute("style") 
+}
+}
 export function toggleAnimateArrowClass(id){
     let arrowContainer=document.getElementById(id)
     arrowContainer.classList.toggle('arrow-animation')

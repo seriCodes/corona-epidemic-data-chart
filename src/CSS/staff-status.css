@@ -16,12 +16,15 @@
 }
 .other-staff-details-container{
     position: absolute;
-    top: 47%;
+    /* top: 47%; */
+    top: -77px;
     left: -140.5%;
     z-index: 2;
     width: 500px;
     height: 350px;
     /* width: 250px; */
+    box-shadow:0 0 20px 0 rgba(0,0,0,0.3607843137254902);
+
 }
 .other-staff-chart-container{
     width: 490px;
