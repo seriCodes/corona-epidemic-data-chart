@@ -29,7 +29,7 @@ let saffAmounts={
     doc:78,
     others:55, 
 }
-let othersData= [4,7,10,12,14,19,28,33,33,52,99]
+let othersData= [4,7,10,12,14,19,28,44,33,52,99]
 
 let lineColors={
     nurses:'rgb(47, 185, 69)',
@@ -353,17 +353,24 @@ let otherStaffChartOptions={
         },
         // inverse:true,
          
+        // nameLocation:'end',
         position:'right',
         type: 'category',
-        data: ["פרמדיקים", "פסיכולוגים/יות", "עוסים", "עובדי מערך לוגיסטי", "עובדי מעבדה", "אנשי כוח עזר", "רוקחים", "חובשי רפואת חירום", "פיזיותרפיסטים/ריפוי בעיסוק/ קלינאי תקשורת", "סקטורים אחרים", "עובדי מינהל ומשק"],
+        data: ["פרמדיקים", "פסיכולוגים/יות", "עוסים", "עובדי מערך לוגיסטי", "עובדי מעבדה", "אנשי כוח עזר", "רוקחים",
+         "חובשי רפואת חירום",
+          " ריפוי בעיסוק/ \nקלינאי תקשורת"
+         , "סקטורים אחרים"
+         , "עובדי מינהל ומשק"],
         axisLabel: {
-            // align:'left',
+            align:'left',
+            padding:[-7 ,0,0,3],
             // align:'center',
             // align:'right',
             verticalAlign:'top',
             // verticalAlign:'bottom',
-
-
+            borderColor :'blue',
+            // borderWidth:5,
+            // width:'30%',
             interval:0, // forces labels to display
             },
             // tooltip: {
@@ -432,7 +439,7 @@ let otherStaffChartOptions={
                 data: othersData.map((item)=>{
 return -1*item
                 }),
-                // data: [-4,-7,-10,-12,-14,-19,-28,-33,-33,-52,-99],
+                // data: [-4,-7,-10,-12,-14,-19,-28,-33,-44,-52,-99],
                 type: 'bar',
                 // stack: 'A',
                 // tooltip: {
@@ -482,7 +489,7 @@ return -1*item
                             grid:{
                                 height:"50%",
                                 width:'50%',
-                                right:'58',
+                                right:'28',
                                 containLabel: true
                                 },
                            },
@@ -498,8 +505,11 @@ return -1*item
             
                             grid:{
                                 height:"95%",
-                                width:'87%',
-                                left:'28',
+                                width:'50%',
+                                // left:'18',
+                                right:'8',
+                                // left:'8',
+
                                 top:'10',
                                 containLabel: true,
         
@@ -508,16 +518,18 @@ return -1*item
                         },
                         {
                             query: {
-                                minWidth:500,
+                                minWidth:400,
                             }, 
                             option: {   
                                 ...otherStaffChartOptions,
-                                // backgroundColor: 'blue',
+                                // backgroundColor: 'gray',
                     
                                 grid:{
-                                    height:"60%",
+                                    height:"90%",
                                     width:'84%',
                                     // right:'90',
+                                    left:'58',
+
                                     containLabel: true,
                                     },
                             },

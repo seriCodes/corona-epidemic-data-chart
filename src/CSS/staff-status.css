@@ -14,25 +14,63 @@
     text-align: center;
     z-index: 1;
 }
+
 .other-staff-details-container{
     position: absolute;
     /* top: 47%; */
     top: -77px;
-    left: -140.5%;
+    left:10%;
     z-index: 2;
-    width: 500px;
+    width: 300px;
     height: 350px;
     /* width: 250px; */
     box-shadow:0 0 20px 0 rgba(0,0,0,0.3607843137254902);
 
 }
+
 .other-staff-chart-container{
-    width: 490px;
+    width: 350px;
         /* height: 80%; */
         height: 340px;
 
 
 }
+@media(min-width: 557px){
+    .other-staff-details-container{
+        top: -77px;
+        left: 2.5%;
+        width: 500px; 
+    }
+    .other-staff-chart-container{
+        width: 490px; 
+    }
+}
+@media(min-width: 665px){
+    .other-staff-details-container{
+        top: -77px;
+        left: 15%;
+        width: 500px;
+
+      
+    }
+}
+
+@media(min-width:850px){
+    .other-staff-details-container{
+        top: -77px;
+        left: 35%;
+      
+    }
+}
+@media(min-width:1000px){
+    .other-staff-details-container{
+         top: -77px;
+        left: -140.5%;
+      
+    }
+}
+
+
 .z-index-plus-one{
     z-index: 555;
 }

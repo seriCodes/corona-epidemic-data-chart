@@ -304,26 +304,58 @@ export const WeeklyChart = ({markLine,isYaxisLableDisplayed,seriesData, seriesNa
         media: [
             {
                 query: {
+                    minWidth:100,
+                }, 
+                option: {   
+                    ...options,
+                    // backgroundColor: 'pink',
+
+                    grid:{
+                        height:"50%",
+                        width:'65%',
+                        right:'10',
+                        },
+                   },
+                },
+            {
+                query: {
+                    minWidth:200,
+                }, 
+                option: {   
+                    ...options,
+                    // backgroundColor: 'yellow',
+
+                    grid:{
+                        height:"50%",
+                        // width:'7%',
+                        // right:'0',
+                        left:'0',
+                        },
+                   },
+                },
+
+            {
+                query: {
                     minWidth:300,
                 }, 
                 option: {   
                     ...options,
-                    // backgroundColor: 'red',
+                    // backgroundColor: 'gray',
 
                     grid:{
                         height:"50%",
-                        width:'67%',
-                        right:'20',
+                        width:'80%',
+                        left:'40',
                         },
                    },
                 },
             {
             query: {
-                minWidth:500,
+                minWidth:400,
             }, 
             option: {   
                 ...options,
-                // backgroundColor: 'blue',
+                // backgroundColor: 'orange',
 
                 grid:{
                     height:"50%",

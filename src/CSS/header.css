@@ -1,3 +1,10 @@
+ 
+ 
+ body{
+    /* border: green solid 3px; */
+ padding:0px 5px;
+ }
+ 
  .main-header-container{
     display: flex;
     flex-direction: column;
@@ -7,18 +14,18 @@
 /* unfortunately inner css func's prevents heroku deployment */
 /* height:80px;  production  version- problem in small screen */
 
-
+/* border: aqua solid 3px; */
   background:white;
   position: fixed;
  top: 0px;
  left: 0px;
 width: 100%;
 padding-top:var(--header-padding-top);  
-z-index: 1; 
+z-index: 2; 
 }
 @media  (min-width: 300px) and  (max-width:519px) {
     .main-header-container{
-        left: 52px;
+        /* left: 52px; */
     } 
   }
   
@@ -66,7 +73,7 @@ height: var(--header-heighet-small-screen-extra);
     font-weight: initial;
 }
 .header-ending .button-default-view {
-margin-left: 17px;
+margin-left: 87px;
 }
 
 @media(min-width:1000px){
@@ -102,5 +109,8 @@ margin-left: 17px;
     .header-ending .title-container .sub-title{
         font-size: .9rem;
     }
+    .header-ending .button-default-view {
+        margin-left: 17px;
+        }
  
 } 
