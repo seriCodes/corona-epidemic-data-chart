@@ -104,12 +104,14 @@ display: block;
     width: 100%;
 }
 .bottom-weekly-container .middle{
-    border-left:var(
+    /* border-left:var(
         --border-weekly) ;
     border-right:var(
         --border-weekly) ;
         border-bottom:var(
-            --border-weekly) ; 
+            --border-weekly) ;  */
+            border:var(
+                --border-weekly) ;
             border-radius: initial;
 }
 
