@@ -45,7 +45,7 @@ export const Header = () => {
  <div  class="sub-title"> 
  <span  class="">עדכון אחרון: </span>
  
- <span >22 באוקטובר 2020
+ <span >21 באוקטובר 2020
             |
             17:57</span> 
 

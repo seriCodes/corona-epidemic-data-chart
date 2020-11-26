@@ -1,4 +1,8 @@
-// const chalk = require('chalk');
+const mongoose = require ('mongoose')
+const MarioChar = require('../models/mariochar')
+
+
+/////
 const path = require('path');
 const express = require('express');
 const favicon = require('express-favicon');
@@ -17,3 +21,43 @@ app.get('/*', function (req, res) {
 });
 
 app.listen(port, () => console.log(`server is up on port ${port}...`));
+///////////
+try {
+
+    mongoose.connect('mongodb+srv://backgammonAdmin:sheshBesh@cluster0.o2lqj.mongodb.net/CODEdb?retryWrites=true&w=majority', { useNewUrlParser: true });
+} catch (error) {
+    console.log('initial connection error')
+ 
+    console.log(error)
+    handleError(error);
+  }
+  
+mongoose.connection.once('open', function(){
+    console.log('connection made')
+ })
+
+mongoose.connection.on('error', err => {
+  logError(err);
+});
+
+var char = new MarioChar({
+    name:"bbbb"
+})
+char.save().then(function(){
+    console.log('sucess saved')
+    console.log(char.isNew==false)
+
+})
+
+
+async function getData(){
+    console.log('getData')
+    
+    let result = await MarioChar.find({});
+    
+    console.log(result)
+    }
+    
+    getData()
+    
+
