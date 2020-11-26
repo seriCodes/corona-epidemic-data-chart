@@ -34,7 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "runDB": "c:/Users/saars/mongodb/bin/mongod.exe --dbpath=c:/Users/saars/mongodb-data",
-    "herokuProcess": "git add . git commit -m 'heroku-commit' git push heroku master"
+    "herokuProcess": "git add . && git commit -m 'heroku-commit' && git push heroku master"
 
   },
   "eslintConfig": {

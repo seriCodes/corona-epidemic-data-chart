@@ -41,7 +41,7 @@ mongoose.connection.on('error', err => {
 });
 
 var char = new MarioChar({
-    name:"bbbb"
+    name:"956"
 })
 char.save().then(function(){
     console.log('sucess saved')
