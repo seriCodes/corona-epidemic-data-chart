@@ -1,8 +1,34 @@
 import React, {useState} from 'react'
 import {v1 as uuidv1} from "uuid";
-// var Chart = require('chart.js');
+//
+import {getChartsData} from "../../functions/getChartsData";
 
-var echarts = require('echarts')
+// // 
+// const mongoose = require ('mongoose')
+// // const MarioChar = require('models/mariochar')
+//  const Schema = mongoose.Schema;
+// const MarioCharSchema= new Schema({
+//     name:String,
+//     weight:Number
+// })
+
+// const MarioChar=mongoose.model('mariochar', MarioCharSchema)
+
+// console.log('before getData')
+
+// async function getData(){
+//     console.log('getData')
+//     console.log(MarioChar)
+//     // let result = await MarioChar.find({});
+    
+//     // console.log(result)
+//     }
+    
+//     getData()
+
+
+    ////
+    var echarts = require('echarts')
 
 export const EchartExpB = (props) => {
 const [newRender, setNewRender]= useState(true)
@@ -272,16 +298,18 @@ let xAxisData= ["1.4","2.4","3.4","4.4","5.4","6.4","7.4"]
    })
 
    
+//    getChartsData()
+
 // console.log('options.series')
 // // options.series[0].radius="10%"
 // console.log(options.series[0].radius) 
        return (
-           <div>
+           <React.Fragment>
            <div onClick={(e)=>{e.stopPropagation()}} class="container   " id='exapampleEchart2'>
      
            <div class="upper-container">
            <span class="chart-title sub-title">כותרת גרף מהפרופס
-           </span>
+         ssas  </span>
                    </div>
            <div class="">
    
@@ -316,7 +344,7 @@ let xAxisData= ["1.4","2.4","3.4","4.4","5.4","6.4","7.4"]
            </div>
        
            
-           </div>
+           </React.Fragment>
            )
    }
    

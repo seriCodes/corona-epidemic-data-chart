@@ -39,6 +39,37 @@ import  '../CSS/header.css'
 // <GraphsCheckBars></GraphsCheckBars>
 // <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 export const AppNonGridContainer = () => {
+
+
+    async function getUsers(names) {
+        let jobs = [];
+      
+        for(let name of names) {
+          let job = fetch(`https://api.github.com/users/${name}`).then(
+            successResponse => {
+              if (successResponse.status != 200) {
+                return null;
+              } else {
+                return successResponse.json();
+              }
+            },
+            failResponse => {
+              return null;
+            }
+          );
+          jobs.push(job);
+        }
+      
+        let results = await Promise.all(jobs);
+      
+        return results;
+      }
+     let result= getUsers(['iliakan', 'remy', 'no.such.users'])
+console.log('result')
+console.log(result)
+
+
+
     return (
         <div class ="app-NonGrid-container">
         <link rel="stylesheet" href="drop-theme-arrows.css" />
@@ -54,7 +85,7 @@ export const AppNonGridContainer = () => {
         <SideBar></SideBar>
 
 
-               
+        <EchartExpB></EchartExpB>
           </div>
     )
 }

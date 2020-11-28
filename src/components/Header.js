@@ -47,7 +47,7 @@ export const Header = () => {
  
  <span >21 באוקטובר 2020
             |
-            17:57</span> 
+            2:22</span> 
 
             </div> 
             </div> 
