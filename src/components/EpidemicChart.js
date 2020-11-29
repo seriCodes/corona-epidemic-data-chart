@@ -5,49 +5,90 @@ import {toggleDisplayNone,addDisplayNoneToClassElements ,toggleAnimateArrowClass
 
 let fontFamily= "Open Sans Hebrew";
 var echarts = require('echarts')
-
-// var Chart = require('chart.js');
-
-let dataAccumulatedVerified=[0,73800,80000,85000,90000,90200,95000,100000,150000,200000,]
-let dataNewRecovered=[0,10000,30400,50100,85000,100200,103000,135210,146909,170000,];
+ 
+// let dataAccumulatedVerified=[ ]
+// let dataNewRecovered=[0,10000,30400,50100,85000,100200,103000,135210,146909,170000,];
 let dataNewVerified=[555,1000,2400,2100,1500,1200,2000,5521,7699,9000,];
 
 var chart
+let firstData={
+    timePeriod:'all-data',
+    typeNewVerified:'bar',
+    typeNewRecovery:'line',
+    typeAccumulatedVerified:'line',
+    defaultChart:'line',
+    recoverdTitle:"מצטבר",
+    recoveredAxis:0,
+    recoveredBackground:"transparent",
+    xAxisData: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October'], 
+    ////// add to seData
+    dataAccumulatedVerified: [],
+    
+    dataNewRecovered:[],
+    dataNewVerified:[],
+    newPatientsYaxisMax:12000,
+    minRightYAxis:0,
+    stepSizeRightYAxis: 2400, 
+    maxLeftYAxis:369000,
+    minLeftYAxis:0,
+    intervalAccumulatedYaxis: 75000, 
+    intervalNewYaxis: 2400, 
+
+}
+var accumulatedVerifiedUpdater;
+var dataNewRecoveredUpdater;
+var dataNewVerifiedUpdater;
 
 export const EpidemicChart = () => {
+     // const [dataAccumulatedVerified, setAccumulatedVerified]=React.useState([])
+    const [data,setData]= useState(firstData)
+ 
+    React.useEffect(async ()=>{ 
+        async function getCharts() {
+            console.log('getCharts')
+             let data = await fetch("http://localhost:3001/charts")
+               let chartsArr = await data.json(); 
+             return chartsArr;
+          }
+         let result= await getCharts()
+         console.log(result)
 
-let backgroundColorStopOne= "rgb(0,206,209)";
-let backgroundColorStopTwo='rgba(360, 360, 360, 1)';
+         accumulatedVerifiedUpdater= result.find(element => element.name =='dataAccumulatedVerified') 
 
+         dataNewRecoveredUpdater= result.find(element => element.name =='dataNewRecovered') 
 
+         dataNewVerifiedUpdater= result.find(element => element.name =='dataNewVerified') 
+//  console.log('accumulatedVerifiedUpdater')
+//  console.log(accumulatedVerifiedUpdater) 
 
-    let firstData={
-        timePeriod:'all-data',
-        typeNewVerified:'bar',
-        typeNewRecovery:'line',
-        typeAccumulatedVerified:'line',
-        defaultChart:'line',
-        recoverdTitle:"מצטבר",
-        recoveredAxis:0,
-        recoveredBackground:"transparent",
-        xAxisData: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October'], 
-        ////// add to seData
-        dataAccumulatedVerified,
-        dataNewRecovered,
-        dataNewVerified,
-        newPatientsYaxisMax:12000,
-        minRightYAxis:0,
-        stepSizeRightYAxis: 2400, 
-        maxLeftYAxis:369000,
-        minLeftYAxis:0,
-        intervalAccumulatedYaxis: 75000, 
-        intervalNewYaxis: 2400, 
+    // setAccumulatedVerified(accumulatedVerified)
+    // accumulatedVerifiedUpdater=accumulatedVerifiedUpdater
+    setData({...data,
+        dataAccumulatedVerified:accumulatedVerifiedUpdater.period["all-data"],
+        dataNewRecovered:dataNewRecoveredUpdater.period["all-data"],
+        dataNewVerified:dataNewVerifiedUpdater.period["all-data"],
+    })
+    // severeSick= result.find(element => element.name =='severe-sick') 
+ 
+    // setSevereSick(severeSick.data)
+    // passedAway= result.find(element => element.name =='passed-away')
+    // setPassedAway(passedAway.data)
+    // dailyTests= result.find(element => element.name =='daily-tests')
+    // console.log('dailyTests')
+    // console.log(dailyTests)
 
-    }
-const [data,setData]= useState(firstData)
-console.log('data-state')
+    // setDailyTests(dailyTests.data)
 
-console.log(data)
+ 
+},[])
+
+// let a = dataAccumulatedVerified.period && dataAccumulatedVerified.period['all-data']
+// console.log(a)
+
+ 
+// console.log('data-state')
+
+// console.log(data)
 
     React.useEffect(()=>{
  
@@ -376,7 +417,7 @@ myChart.setOption({
 })
     const changeDataPeriod=(e)=>{
         //  console.log(e.value)
-
+console.log(accumulatedVerifiedUpdater)
         //  alert(e.value)
         // switch(e.target.value){
             switch(e){
@@ -394,9 +435,9 @@ myChart.setOption({
                     barPercentage:0.23,
                 recoveredBackground:"transparent",
                 xLables: ['january', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October'],
-                dataAccumulatedVerified:[0,73800,80000,85000,90000,90200,95000,100000,150000,200000,],
-                dataNewRecovered,
-                dataNewVerified:[555,1000,2400,2100,1500,1200,2000,5521,7699,9000,],
+                dataAccumulatedVerified:accumulatedVerifiedUpdater.period["all-data"],
+                dataNewRecovered:dataNewRecoveredUpdater.period["all-data"],
+                dataNewVerified:dataNewVerifiedUpdater.period["all-data"],
                 xAxisData: firstData.xAxisData,
                 intervalNewYaxis:2400,
             })
@@ -418,9 +459,9 @@ myChart.setOption({
                     recoveredBackground:"gray",
                     xLables: ['1', '2', '3', '4', '5', '6', '7',],
 
-                    dataAccumulatedVerified:[73800,90000,90200,95000,177000,190000,200001],
-                    dataNewRecovered:[0,550,750,100,700,120,200,],
-                    dataNewVerified:[555,665,240,400,700,707,203,],
+                    dataAccumulatedVerified:accumulatedVerifiedUpdater.period["last-week"],
+                    dataNewRecovered:dataNewRecoveredUpdater.period["last-week"],
+                    dataNewVerified:dataNewVerifiedUpdater.period["last-week"],
                     
                     maxRightYAxis:1200,
                     minRightYAxis:0,
@@ -452,10 +493,10 @@ myChart.setOption({
             barPercentage:0.23,
             xLables: ['1', '2', '3', '4', '5', '6', '7','8','9', '10','11','12', '13','14'],
 
-            dataAccumulatedVerified:[59800,65000,70000,73000,73600,73800,80000,85000,90000,90200,95000,100000,150000,150001],
-            dataNewRecovered:[160, 550,750,100,300,105,0,550,750,100,700,120,200,],
+            dataAccumulatedVerified:accumulatedVerifiedUpdater.period["last-two-weeks"],
+            dataNewRecovered:dataNewRecoveredUpdater.period["last-two-weeks"],
 
-            dataNewVerified:[555,665,240,400,700,707,203,555,665,240,400,700,707,203,],
+            dataNewVerified:dataNewVerifiedUpdater.period["last-two-weeks"],
             
             maxRightYAxis:1900,
             minRightYAxis:0,
@@ -485,10 +526,10 @@ myChart.setOption({
             recoveredBackground:"gray",
             xLables: ['1', '2', '3', '4', '5', '6', '7','8','9', '10','11','12', '13','14','15', '16', '17', '18', '19', '20', '21','22','23', '24','25','26', '27','28'],
 
-            dataAccumulatedVerified:[59800,65000,70000,73000,73600,73800,80000,85000,90000,90200,95000,100000,150000,150001,160001,165501,171501,179501,182501,182901,183101,183901,184101,187101,223101,263101,293101,303101],
-            dataNewRecovered:[1600, 5500,7500,1000,3000,1005,0,5500,7500,1000,7000,1200,2000,1600, 5500,7500,1000,3000,1005,0,5500,7500,1000,7000,1200,2000,1200,2000],
+            dataAccumulatedVerified:accumulatedVerifiedUpdater.period["last-month"],
+            dataNewRecovered:dataNewRecoveredUpdater.period["last-month"],
 
- dataNewVerified:[5550,6650,2400,4000,7000,7007,2003,5505,6065,2400,4000,7000,7007,2003,5550,6650,2400,4000,7000,7007,2003,5505,6065,2400,4000,7000,7007,2003,],
+ dataNewVerified:dataNewVerifiedUpdater.period["last-month"],
             
             maxRightYAxis:9700,
             minRightYAxis:0,

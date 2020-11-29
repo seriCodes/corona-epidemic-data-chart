@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import AppContainer from './AppContainer';  
 import {SideBar} from './SideBar';  
  import {EchartExp,GraphsCheck,GraphsCheckBars,} from './playground/GraphsCheck'; 
@@ -40,35 +40,25 @@ import  '../CSS/header.css'
 // <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 export const AppNonGridContainer = () => {
 
-
-    async function getUsers(names) {
-        let jobs = [];
-      
-        for(let name of names) {
-          let job = fetch(`https://api.github.com/users/${name}`).then(
-            successResponse => {
-              if (successResponse.status != 200) {
-                return null;
-              } else {
-                return successResponse.json();
-              }
-            },
-            failResponse => {
-              return null;
-            }
-          );
-          jobs.push(job);
-        }
-      
-        let results = await Promise.all(jobs);
-      
-        return results;
-      }
-     let result= getUsers(['iliakan', 'remy', 'no.such.users'])
-console.log('result')
-console.log(result)
-
-
+    useEffect(async ()=>{ 
+        async function getCharts(names) {
+            console.log('getCharts')
+               let data = await fetch("http://localhost:3001/")
+              let chartsArr = await data.json(); 
+        
+            //   jobs.push(a);
+            // }
+          
+            // let results = await Promise.all(jobs);
+          
+            // return results;
+            return chartsArr;
+          }
+         let result= await getCharts()
+    console.log('result')
+    console.log(result) 
+})
+   
 
     return (
         <div class ="app-NonGrid-container">
@@ -82,14 +72,12 @@ console.log(result)
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
         <AppContainer></AppContainer>
-        <SideBar></SideBar>
-
-
-        <EchartExpB></EchartExpB>
+        <SideBar></SideBar> 
           </div>
     )
 }
-//  <ReactTablePlay></ReactTablePlay>         <DropTether></DropTether>
+//  <ReactTablePlay></ReactTablePlay>         <DropTether></DropTether>         <EchartExpB></EchartExpB>
+
 
 //  <SicksDistributionCopy></SicksDistributionCopy>
 // <YValuesExample></YValuesExample>

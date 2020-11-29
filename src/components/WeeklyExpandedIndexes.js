@@ -18,6 +18,10 @@ let fontFamily= "Open Sans Hebrew";
 // // 
 
 const severeSickYAxisLabelFormatter=function (value, index) {
+
+
+
+
     if(value<0){
        value*=-1;
         return '%'+ (value) + '-'
@@ -58,6 +62,27 @@ const markLineNewNumberVerified= {
 };
 
 export const WeeklyExpandedIndexes = (props) => {
+    const [dataVerifiedTrendWeekly, setDataVerifiedTrendWeekly]=React.useState([])
+    const [dataSevereSickWeekly, setDataSevereSickWeekly]=React.useState([])
+     const [dataVerifiedOutSevereZones, setdataVerifiedOutSevereZones]=React.useState([])
+
+     React.useEffect(async ()=>{ 
+        async function getCharts() {
+            let data = await fetch("http://localhost:3001/charts")
+            let chartsArr = await data.json(); 
+            return chartsArr;
+
+        }
+        let result= await getCharts()
+
+        setDataVerifiedTrendWeekly(result.find(element => element.name =='dailyVerifiedTrend').data)
+
+        setDataSevereSickWeekly(result.find(element => element.name =='severeSickWeekly').data)
+
+        setdataVerifiedOutSevereZones(result.find(element => element.name =='newVerifiedOutsideDangerZones').data)
+ 
+    },[]     )
+  
     let chartId1=uuidv1()
     let chartId2=uuidv1()
     let chartId3=uuidv1()
@@ -98,8 +123,9 @@ yAxisLabelFormatter={severeSickYAxisLabelFormatter}
 lineLabelFormatter={weeklyPercentLineLabelFormatter}
 areaStyleColorStop1={{offset: 0, color: 'rgb(20,206,209)'}}
 areaStyleColorStop2={ {offset: 1, color:'rgba(360, 360, 360, 1)'}}
-
-seriesData={[-8, -7, -4, 0, 1, -2,-2]}
+// dataVerifiedTrendWeekly && dataVerifiedTrendWeekly?.length>0 && 
+seriesData={ 
+    (dataVerifiedTrendWeekly)}
 
 displayYaxisTitle={true}
  yAxesTitle={'אחוז שינוי יומי'}
@@ -113,7 +139,7 @@ displayYaxisTitle={true}
     position={"start"} 
     id={chartId1} 
     chartType={'line'} 
-    title={  "מגמת שינוי במאומתים חדשים וקצב הכפלה"} middleElenet={[<i class="fa fa-info-circle" aria-hidden="true"></i>, " % שינוי בממוצע מאומתים חדשים שבועי, ומספר הימים להכפלת הנדבקים (בסוגריים)"]}
+    title={"מגמת שינוי במאומתים חדשים וקצב הכפלה"} middleElenet={[<i class="fa fa-info-circle" aria-hidden="true"></i>, " % שינוי בממוצע מאומתים חדשים שבועי, ומספר הימים להכפלת הנדבקים (בסוגריים)"]}
     beginAtZero={false}
     backgroundColorStopOne={"white"}
     backgroundColorStopTwo={'white'}
@@ -132,7 +158,7 @@ lineLabelFormatter={null}
 chartColor={'rgb(124, 123, 151)'}
 
 seriesName={'severe sick'}
-seriesData={[433, 415, 403, 405, 386, 357,353]}
+seriesData={dataSevereSickWeekly}
 
 displayYaxisTitle={false} 
 backgroundColor={'white'} 
@@ -163,7 +189,7 @@ yAxesTitle={null}
 lineLabelFormatter={null}
 
 seriesName={'new verified'}
-seriesData={[188,517, 176,481,605,644,1977]}
+seriesData={dataVerifiedOutSevereZones}
 
  xAxisData={xAxisData} position={"end"} id={chartId3} chartType={'bar'}  
  yTicksMax={1000} yTicksMin={0}  yTicksInterval={500}

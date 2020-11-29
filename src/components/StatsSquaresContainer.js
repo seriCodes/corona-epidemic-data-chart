@@ -4,13 +4,54 @@ import {StatsBottomElement} from './StatsBottomElement'
 import {DailyTrend} from './DailyTrend'
 
 export const StatsSquaresContainer = () => {
+     const [dataBreathAid, setBreathAid]=React.useState("")
+    const [dataSevereSick, setSevereSick]=React.useState("")
+    const [dataPassedAway, setPassedAway]=React.useState("")
+    const [dataDailyTests, setDailyTests]=React.useState([])
+
+
+    // 
+    let breathAid;
+    let severeSick;
+    let passedAway;
+    let dailyTests;
+    React.useEffect(async ()=>{ 
+        async function getCharts() {
+            console.log('getCharts')
+             let data = await fetch("http://localhost:3001/charts")
+               let chartsArr = await data.json(); 
+             return chartsArr;
+          }
+         let result= await getCharts()
+ 
+    breathAid= result.find(element => element.name =='breath-aid') 
+ 
+    setBreathAid(breathAid.data)
+    
+    severeSick= result.find(element => element.name =='severe-sick') 
+ 
+    setSevereSick(severeSick.data)
+    passedAway= result.find(element => element.name =='passed-away')
+    setPassedAway(passedAway.data)
+    dailyTests= result.find(element => element.name =='daily-tests')
+    console.log('dailyTests')
+    console.log(dailyTests)
+
+    setDailyTests(dailyTests.data)
+
+
+
+    // dailyTests
+},[])
+
+
 let firstStatsBottomElement=(<StatsBottomElement subText1={'בינוני'} amount1={'666'} subText2={'קשה'} amount2={'777'}>  </StatsBottomElement>)
 let xAxisData=['1.1','1.2','1.3','1.4','1.5','1.6'];
 let respiratorsChart={
     xAxisData,
     title:"מונשמים",
     yAxisTitle:"כמות מונשמים",
-seriesData:[0, 10, 20, 100, 240, 200],
+seriesData:dataBreathAid || [ ],
 minInterval:113,
 seriesName:'מונשמים',
 }
@@ -18,7 +59,7 @@ let severeChart={
     xAxisData,
     title:"חולים קשה",
     yAxisTitle:"כמות חולים קשה",
-seriesData:[0, 101, 130, 100, 140, 200],
+seriesData:dataSevereSick || [],
 minInterval:113,
 seriesName:'חולים קשה',
 
@@ -27,7 +68,7 @@ let passedAwayChart={
     xAxisData,
     title:"נפטרים ",
     yAxisTitle:"כמות נפטרים",
-seriesData:[0, 10, 3, 5, 6,4,4,5,6,6,2,3,4,4,5,6,5,4,5,2,1,4,],
+seriesData: dataPassedAway || [],
 minInterval:1,
 seriesName:'נפטרים ',
 }
@@ -35,7 +76,7 @@ let sicknesTestAmountChart={
     xAxisData,
     title:"בדיקות",
     yAxisTitle:"כמות בדיקות יומיות",
-    seriesData:[220, 1010, 1030, 10220, 14080, 20000],
+    seriesData:dataDailyTests,
     minInterval:19880,
 seriesName:'בדיקות יומיות',
 }
